@@ -9,11 +9,6 @@ jobs:
   Linter:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      packages: read
-      statuses: write
-
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
