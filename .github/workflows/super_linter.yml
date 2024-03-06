@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
 
       - name: Super-linter
-        uses: umitbuyukulcay/super-linter@latest
+        uses: ghcr.io/umitbuyukulcay/super-linter:latest
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
