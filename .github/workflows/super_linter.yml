@@ -12,7 +12,6 @@ jobs:
       image: ghcr.io/umitbuyukulcay/super-linter:latest
       credentials:
         username: ${{ github.actor }}
-        password: ${{ secrets.container_registery_read }}
 
     permissions:
       contents: read
