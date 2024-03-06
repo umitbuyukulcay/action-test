@@ -1,0 +1,52 @@
+name: Super Linter
+
+on:
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  Linter:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Super-linter
+        uses: umitbuyukulcay/super-linter@latest
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BRANCH: main
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_CLANG_FORMAT: true
+          VALIDATE_ARM: true 
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_JSON	: true
+          VALIDATE_JSX: true
+          VALIDATE_TSX: true
+          VALIDATE_TYPESCRIPT_ES: true
+          VALIDATE_CSS: true
+          VALIDATE_PROTOBUF: true
+          VALIDATE_HTML: true
+          VALIDATE_LATEX: true
+          VALIDATE_MARKDOWN: true
+          VALIDATE_PYTHON: true
+          VALIDATE_SHELL_SHFMT: true
+          VALIDATE_XML: true
+          VALIDATE_YAML: true
+          VALIDATE_BASH: true
+          VALIDATE_BASH_EXEC: true # check if bash is executable
+          VALIDATE_CSHARP: true
+          VALIDATE_DOCKERFILE_HADOLINT: true
+          VALIDATE_GITHUB_ACTIONS: true
+          VALIDATE_GITLEAKS: true # check secrets
+          LOG_LEVEL: DEBUG
+
