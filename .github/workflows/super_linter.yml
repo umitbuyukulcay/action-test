@@ -20,6 +20,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u USERNAME --password-stdin
+
       - name: Super-linter
         uses: docker://ghcr.io/umitbuyukulcay/super-linter:latest
         env: 
@@ -49,4 +52,4 @@ jobs:
           VALIDATE_GITHUB_ACTIONS: true
           VALIDATE_GITLEAKS: true # check secrets
           LOG_LEVEL: DEBUG
-
+          
