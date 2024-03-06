@@ -22,7 +22,7 @@ jobs:
 
       - name: Super-linter
         uses: docker://ghcr.io/umitbuyukulcay/super-linter:latest
-        env: 
+        with: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
