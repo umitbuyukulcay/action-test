@@ -6,7 +6,7 @@ on:
       - "**"
 
 jobs:
-  set_Stage:
+  Linter:
     runs-on: ubuntu-latest
 
     permissions:
@@ -27,20 +27,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-
-  Linter:
-    needs: set_Stage
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: read
-      statuses: write
-    
-    steps:
       - name: Super-linter
         uses: docker://ghcr.io/umitbuyukulcay/super-linter-3:latest
-        with: 
+        env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
