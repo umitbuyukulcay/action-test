@@ -5,13 +5,8 @@ on:
     branches:
       - "**"
 
-env:
-  registry: ghcr.io
-  username: ${{ github.actor }}
-  password: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
-  Linter:
+  set_Stage:
     runs-on: ubuntu-latest
 
     permissions:
@@ -25,6 +20,24 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Log in to GitHub Packages Docker Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+
+  Linter:
+    needs: set_Stage
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
+    
+    steps:
       - name: Super-linter
         uses: docker://ghcr.io/umitbuyukulcay/super-linter-3:latest
         with: 
