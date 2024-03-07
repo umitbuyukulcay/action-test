@@ -21,8 +21,8 @@ jobs:
           fetch-depth: 0
 
       - name: Super-linter
-        uses: docker://ghcr.io/umitbuyukulcay/super-linter:latest
-        with: 
+        uses: docker://ghcr.io/umitbuyukulcay/super-linter-3:latest
+        env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
